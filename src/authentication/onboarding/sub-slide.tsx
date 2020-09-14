@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import Animated from "react-native-reanimated";
+
+import { Button } from "./components";
 
 const styles = StyleSheet.create({
   container: {
@@ -23,6 +24,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     color: "#0C0D34",
     textAlign: "center",
+    marginBottom: 40,
   },
 });
 
@@ -30,12 +32,18 @@ interface SubSlideProps {
   subTitle: string;
   description: string;
   last: boolean;
+  onPress: () => void;
 }
 
-const SubSlide = ({ subTitle, description, last }: SubSlideProps) => (
+const SubSlide = ({ subTitle, description, last, onPress }: SubSlideProps) => (
   <View style={styles.container}>
     <Text style={styles.subTitle}>{subTitle}</Text>
     <Text style={styles.description}>{description}</Text>
+    <Button
+      label={last ? "Let's get Started" : "Next"}
+      variant={last ? "primary" : "default"}
+      {...{ onPress }}
+    />
   </View>
 );
 
