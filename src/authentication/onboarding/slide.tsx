@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
     width,
   },
   titleContainer: {
-    backgroundColor: "red",
     height: 100,
     justifyContent: "center",
   },
@@ -31,7 +30,7 @@ const styles = StyleSheet.create({
 const Slide: FC<SlideProps> = ({ label, right }) => {
   const transform = [
     { translateY: (SLIDE_HEIGHT - 100) / 2 },
-    { translateX: ((right ? 1 : -1) * width) / 2 },
+    { translateX: right ? width / 2 - 50 : -width / 2 + 50 },
     { rotate: right ? "-90deg" : "90deg" },
   ];
   return (
