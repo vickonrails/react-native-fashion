@@ -9,6 +9,8 @@ import {
 
 import Slide, { SLIDE_HEIGHT } from "./slide";
 
+const BORDER_RADIUS = 75;
+
 const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
   container: {
@@ -18,20 +20,32 @@ const styles = StyleSheet.create({
   slider: {
     height: SLIDE_HEIGHT,
     backgroundColor: "cyan",
-    borderBottomRightRadius: 55,
+    borderBottomRightRadius: BORDER_RADIUS,
   },
   footer: {
     flex: 1,
   },
+  footerContent: {
+    flex: 1,
+    backgroundColor: "white",
+    borderTopLeftRadius: BORDER_RADIUS,
+  },
 });
+
+const slides = [
+  { label: "Relaxed", color: "#BFEAF5" },
+  { label: "Playful", color: "#BEECC4" },
+  { label: "Excentric", color: "#FFE4D9" },
+  { label: "Funky", color: "#FFDDDD" },
+];
 
 export const Onboarding = () => {
   const x = useValue(0);
   // TODO: useScrollEvent?
   const onScroll = onScrollEvent({ x });
   const backgroundColor = interpolateColor(x, {
-    inputRange: [0, width, width * 2, width * 3],
-    outputRange: ["#BFEAF5", "#BEECC4", "#FFE4D9", "#FFDDDD"],
+    inputRange: slides.map((_, i) => i * width),
+    outputRange: slides.map((slide) => slide.color),
   });
 
   return (
@@ -46,19 +60,16 @@ export const Onboarding = () => {
           scrollEventThrottle={1}
           {...{ onScroll }}
         >
-          <Slide label="Relaxed" />
-          <Slide label="Playful" right />
-          <Slide label="Eccentric" />
-          <Slide label="Funky" right />
+          {slides.map(({ label }, index) => (
+            <Slide key={index} right={!!(index % 2)} {...{ label }} />
+          ))}
         </Animated.ScrollView>
       </Animated.View>
       <View style={styles.footer}>
         <Animated.View
           style={{ ...StyleSheet.absoluteFillObject, backgroundColor }}
         />
-        <View
-          style={{ flex: 1, backgroundColor: "white", borderTopLeftRadius: 75 }}
-        />
+        <View style={styles.footerContent} />
       </View>
     </View>
   );
