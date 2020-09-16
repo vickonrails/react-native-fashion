@@ -22,12 +22,13 @@ const styles = StyleSheet.create({
     fontSize: 80,
     fontFamily: "SFProText-Bold",
     lineHeight: 80,
+    paddingTop: 20,
     color: "white",
     textAlign: "center",
   },
 });
 
-const Slide: FC<SlideProps> = ({ title, right }) => {
+const Slide: FC<SlideProps> = ({ title, right }: SlideProps) => {
   const transform = [
     { translateY: (SLIDE_HEIGHT - 100) / 2 },
     { translateX: right ? width / 2 - 50 : -width / 2 + 50 },
