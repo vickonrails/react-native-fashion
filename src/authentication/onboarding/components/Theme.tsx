@@ -17,7 +17,7 @@ const theme = createTheme({
   colors: {
     primary: "#2CB9B0",
     title: "#C0C0D34",
-    body: "rgba(12, 13,52, 0.7)",
+    text: "rgba(12, 13,52, 0.7)",
     white: "white",
   },
   breakpoints: {},
@@ -50,7 +50,7 @@ const theme = createTheme({
       fontSize: 16,
       lineHeight: 24,
       fontFamily: "SFProText-Regular",
-      color: "body",
+      color: "text",
     },
   },
 });
