@@ -77,8 +77,6 @@ const slides = [
 
 export const Onboarding = () => {
   const scroll = useRef<Animated.ScrollView>(null);
-  // const x = useValue(0);
-  // TODO: useScrollEvent?
   const { scrollHandler, x } = useScrollHandler();
   const backgroundColor = interpolateColor(x, {
     inputRange: slides.map((_, i) => i * width),
