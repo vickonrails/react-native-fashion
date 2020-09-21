@@ -12,6 +12,7 @@ import Dot from "./components/dot";
 import Slide, { SLIDE_HEIGHT } from "./slide";
 import SubSlide from "./sub-slide";
 import { theme } from "./components";
+import { Routes, StackNavigationProps } from "./components/Navigation";
 
 const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
@@ -99,7 +100,9 @@ const slides = [
   },
 ];
 
-export const Onboarding = () => {
+export const Onboarding = ({
+  navigation,
+}: StackNavigationProps<Routes, "Onboarding">) => {
   const scroll = useRef<Animated.ScrollView>(null);
   const { scrollHandler, x } = useScrollHandler();
   const backgroundColor = interpolateColor(x, {
@@ -183,20 +186,24 @@ export const Onboarding = () => {
               transform: [{ translateX: num }],
             }}
           >
-            {slides.map(({ subTitle, description }, index) => (
-              <SubSlide
-                key={index}
-                onPress={() => {
-                  if (scroll.current) {
-                    scroll.current
-                      .getNode()
-                      .scrollTo({ x: width * (index + 1), animated: true });
-                  }
-                }}
-                last={index === slides.length - 1}
-                {...{ subTitle, description }}
-              />
-            ))}
+            {slides.map(({ subTitle, description }, index) => {
+              const last = index === slides.length - 1;
+              return (
+                <SubSlide
+                  key={index}
+                  onPress={() => {
+                    if (last) {
+                      navigation.navigate("Welcome");
+                    } else {
+                      scroll.current
+                        ?.getNode()
+                        .scrollTo({ x: width * (index + 1), animated: true });
+                    }
+                  }}
+                  {...{ subTitle, description, last }}
+                />
+              );
+            })}
           </Animated.View>
         </Animated.View>
       </View>
