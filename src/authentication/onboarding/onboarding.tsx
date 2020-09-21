@@ -57,7 +57,7 @@ const slides = [
     description:
       "Confused about your outfit? Don't worry! Find the best outfit here",
     picture: {
-      src: require("../../../assets/images/images/1.png"),
+      src: require("../../../assets/images/1.png"),
       width: 2513,
       height: 3583,
     },
@@ -69,7 +69,7 @@ const slides = [
     description:
       "Hating the clothes in your wardrobe? Explore hundreds of outfit idea",
     picture: {
-      src: require("../../../assets/images/images/2.png"),
+      src: require("../../../assets/images/2.png"),
       width: 2791,
       height: 3744,
     },
@@ -81,7 +81,7 @@ const slides = [
     description:
       "Find your individual & unique style and look amazing everyday",
     picture: {
-      src: require("../../../assets/images/images/3.png"),
+      src: require("../../../assets/images/3.png"),
       width: 2738,
       height: 3244,
     },
@@ -93,7 +93,7 @@ const slides = [
     description:
       "Discover the latest trends in fashion and explore your personality",
     picture: {
-      src: require("../../../assets/images/images/4.png"),
+      src: require("../../../assets/images/4.png"),
       width: 1757,
       height: 2551,
     },
