@@ -9,8 +9,9 @@ import Animated, {
 import { interpolateColor, useScrollHandler } from "react-native-redash";
 
 import Dot from "./components/dot";
-import Slide, { SLIDE_HEIGHT, BORDER_RADIUS } from "./slide";
+import Slide, { SLIDE_HEIGHT } from "./slide";
 import SubSlide from "./sub-slide";
+import { theme } from "./components";
 
 const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
   slider: {
     height: SLIDE_HEIGHT,
     backgroundColor: "cyan",
-    borderBottomRightRadius: BORDER_RADIUS,
+    borderBottomRightRadius: theme.borderRadii.xl,
   },
   footer: {
     flex: 1,
@@ -29,11 +30,11 @@ const styles = StyleSheet.create({
   footerContent: {
     flex: 1,
     backgroundColor: "white",
-    borderTopLeftRadius: BORDER_RADIUS,
+    borderTopLeftRadius: theme.borderRadii.xl,
   },
   pagination: {
     ...StyleSheet.absoluteFillObject,
-    height: BORDER_RADIUS,
+    height: theme.borderRadii.xl,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     alignItems: "center",
     justifyContent: "flex-end",
-    borderBottomRightRadius: BORDER_RADIUS,
+    borderBottomRightRadius: theme.borderRadii.xl,
     overflow: "hidden",
   },
 });
@@ -126,9 +127,10 @@ export const Onboarding = () => {
               <Image
                 source={picture.src}
                 style={{
-                  width: width - BORDER_RADIUS,
+                  width: width - theme.borderRadii.xl,
                   height:
-                    ((width - BORDER_RADIUS) * picture.height) / picture.width,
+                    ((width - theme.borderRadii.xl) * picture.height) /
+                    picture.width,
                 }}
               />
             </Animated.View>

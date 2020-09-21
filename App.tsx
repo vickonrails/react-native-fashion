@@ -6,6 +6,7 @@ import { ThemeProvider } from "@shopify/restyle";
 import { Onboarding } from "./src/authentication/onboarding";
 import { Welcome } from "./src/authentication/welcome";
 import { LoadAssets, theme } from "./src/authentication/onboarding/components";
+import { Routes } from "./src/authentication/onboarding/components/Routes";
 
 const fonts = {
   "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
@@ -13,7 +14,7 @@ const fonts = {
   "SFProText-Regular": require("./assets/fonts/SF-Pro-Text-Regular.otf"),
 };
 
-const AuthenticationStack = createStackNavigator();
+const AuthenticationStack = createStackNavigator<Routes>();
 
 const { Screen, Navigator } = AuthenticationStack;
 
