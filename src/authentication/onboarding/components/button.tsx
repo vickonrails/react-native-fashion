@@ -20,10 +20,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  label: {
-    fontFamily: "SFProText-Regular",
-    fontSize: 15,
-  },
 });
 
 const Button = ({ variant, label, onPress }: ButtonProps) => {

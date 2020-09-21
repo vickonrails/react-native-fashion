@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
-import Animated, { divide, multiply } from "react-native-reanimated";
-import {
-  useValue,
-  onScrollEvent,
-  interpolateColor,
-  useScrollHandler,
-} from "react-native-redash";
-import Dot from "./components/dot";
+import { View, StyleSheet, Dimensions, Image } from "react-native";
+import Animated, {
+  divide,
+  Extrapolate,
+  interpolate,
+  multiply,
+} from "react-native-reanimated";
+import { interpolateColor, useScrollHandler } from "react-native-redash";
 
+import Dot from "./components/dot";
 import Slide, { SLIDE_HEIGHT, BORDER_RADIUS } from "./slide";
 import SubSlide from "./sub-slide";
 
@@ -38,6 +38,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  underlay: {
+    ...StyleSheet.absoluteFillObject,
+    alignItems: "center",
+    justifyContent: "flex-end",
+    borderBottomRightRadius: BORDER_RADIUS,
+    overflow: "hidden",
+  },
 });
 
 const slides = [
@@ -47,7 +54,11 @@ const slides = [
     subTitle: "Find Your Outfits",
     description:
       "Confused about your outfit? Don't worry! Find the best outfit here",
-    picture: require("../../../assets/images/01.png"),
+    picture: {
+      src: require("../../../assets/images/01.png"),
+      width: 2513,
+      height: 3583,
+    },
   },
   {
     title: "Playful",
@@ -55,7 +66,11 @@ const slides = [
     subTitle: "Hear it First, Wear it First",
     description:
       "Hating the clothes in your wardrobe? Explore hundreds of outfit idea",
-    picture: require("../../../assets/images/02.png"),
+    picture: {
+      src: require("../../../assets/images/02.png"),
+      width: 2791,
+      height: 3744,
+    },
   },
   {
     title: "Excentric",
@@ -63,7 +78,11 @@ const slides = [
     subTitle: "Your Style, Your Way",
     description:
       "Find your individual & unique style and look amazing everyday",
-    picture: require("../../../assets/images/03.png"),
+    picture: {
+      src: require("../../../assets/images/03.png"),
+      width: 2738,
+      height: 3244,
+    },
   },
   {
     title: "Funky",
@@ -71,7 +90,11 @@ const slides = [
     subTitle: "Look Good, Feel Good",
     description:
       "Discover the latest trends in fashion and explore your personality",
-    picture: require("../../../assets/images/04.png"),
+    picture: {
+      src: require("../../../assets/images/04.png"),
+      width: 1757,
+      height: 2551,
+    },
   },
 ];
 
@@ -88,6 +111,30 @@ export const Onboarding = () => {
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.slider, { backgroundColor }]}>
+        {slides.map(({ picture }, index) => {
+          const opacity = interpolate(x, {
+            inputRange: [
+              (index - 0.7) * width,
+              index * width,
+              (index + 0.5) * width,
+            ],
+            outputRange: [0, 1, 0],
+            extrapolate: Extrapolate.CLAMP,
+          });
+          return (
+            <Animated.View style={[styles.underlay, { opacity }]} key={index}>
+              <Image
+                source={picture.src}
+                style={{
+                  width: width - BORDER_RADIUS,
+                  height:
+                    ((width - BORDER_RADIUS) * picture.height) / picture.width,
+                }}
+              />
+            </Animated.View>
+          );
+        })}
+
         <Animated.ScrollView
           horizontal
           ref={scroll}

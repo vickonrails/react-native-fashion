@@ -55,7 +55,7 @@ const theme = createTheme({
     },
     button: {
       fontSize: 15,
-      fontFamily: "SFProText-Medium",
+      fontFamily: "SFProText-Regular",
     },
   },
 });
