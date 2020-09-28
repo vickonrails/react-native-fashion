@@ -4,10 +4,12 @@ const theme = createTheme({
   colors: {
     primary: "#2CB9B0",
     secondary: "#0C0D34",
+    danger: "#FF0058",
     text: "rgba(12, 13,52, 0.7)",
     white: "white",
     grey: "rgba(12,13,52,0.05)",
     "slide.grey": "#F4F0EF",
+    darkGrey: "#8A8D90",
   },
   breakpoints: {},
   spacing: {
@@ -32,7 +34,7 @@ const theme = createTheme({
     },
     title1: {
       fontSize: 28,
-      fontFamily: "SFProText-SemiBold",
+      fontFamily: "SFProText-Semibold",
       color: "secondary",
     },
     title2: {
@@ -58,4 +60,5 @@ const theme = createTheme({
 export type Theme = typeof theme;
 export const Text = createText<Theme>();
 export const Box = createBox<Theme>();
+
 export default theme;

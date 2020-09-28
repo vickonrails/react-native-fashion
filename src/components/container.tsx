@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { Dimensions, Image, StatusBar, StyleSheet } from "react-native";
-import { useSafeArea, useSafeAreaInsets } from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import theme, { Box } from "./Theme";
 
@@ -20,7 +20,7 @@ const Container = ({ children, footer }: ContainerProps) => {
   // return <Box flex={1}>{children}</Box>;
   return (
     <Box flex={1} backgroundColor="secondary">
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="default" />
       <Box backgroundColor="white">
         <Box
           borderBottomLeftRadius="xl"
