@@ -8,11 +8,16 @@ import Animated, {
 } from "react-native-reanimated";
 import { interpolateColor, useScrollHandler } from "react-native-redash";
 
-import Dot from "./components/dot";
+import { theme } from "../../components";
+import Dot from "../../components/dot";
+import { Routes, StackNavigationProps } from "../../components/Navigation";
+
+// import Dot from "../../components/dot";
 import Slide, { SLIDE_HEIGHT } from "./slide";
 import SubSlide from "./sub-slide";
-import { theme } from "./components";
-import { Routes, StackNavigationProps } from "./components/Navigation";
+// import SubSlide from "./sub-slide";
+// import { theme } from "../../components";
+// import { Routes, StackNavigationProps } from "../../components/Navigation";
 
 const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
@@ -34,9 +39,10 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: theme.borderRadii.xl,
   },
   pagination: {
-    ...StyleSheet.absoluteFillObject,
-    height: theme.borderRadii.xl,
+    // ...StyleSheet.absoluteFillObject,
+    height: theme.borderRadii.l,
     flexDirection: "row",
+    marginTop: theme.borderRadii.m,
     justifyContent: "center",
     alignItems: "center",
   },

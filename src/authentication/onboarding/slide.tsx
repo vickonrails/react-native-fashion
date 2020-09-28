@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { View, StyleSheet, Dimensions, ImageRequireSource } from "react-native";
 
-import { Text } from "./components";
+import { Text } from "../../components";
 
 interface SlideProps {
   title: string;
